@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance predictor</title>
+
+    <style>
+        *{font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+          padding-left: 30px;
+          padding-right: 30px}
+    </style>
+
+</head>
+<body>
+
+    <h1>🐵</h1>
+    <h1>Predict performance</h1>
+    <p>This model predicts the next session's performance (tracking time %) based on the last session's performance. </p>
+    <p>The model uses trends in error, previous tracking time %, familiarity with difficulty level (ex: trajectory amplitude, length of task), and other features to make predictions.</p>
+    
+    <form method="post">
+        <label for="dropdown">Select a subject:</label>
+        <select name="dropdown" id="dropdown">
+            <option value="chur">chur</option>
+            <option value="utu">utu</option>
+            <option value="daif">daif</option>
+            <option value="beig">beig</option>
+            <option value="affi">affi</option>
+        </select>
+
+        <br/>
+        
+        <label for="dropdown2">Select difficulty:</label>
+        <select name="dropdown2" id="dropdown2">
+            <option value = 0>same difficulty</option>
+            <option value = 1>harder difficulty</option>
+        </select>
+
+        <button type="submit">Predict</button>
+    </form>
+    
+    {% if result %}
+        <h2>Prediction:</h2>
+        <p>Selected Subject: {{ selected_value }}</p>
+        <p>Selected Difficulty: {{ selected_difficulty }}</p>
+        <p>Predicted tracking time: {{ result }}%</p>
+    {% endif %}
+</body>
+</html>
